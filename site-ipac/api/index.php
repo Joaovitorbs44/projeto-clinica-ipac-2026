@@ -1,3 +1,5 @@
 <?php
 
-echo 'PHP funcionando na Vercel';
+declare(strict_types=1);
+
+require_once __DIR__ . '/../src/pages/ipac.php';
