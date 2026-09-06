@@ -1,0 +1,188 @@
+@import "tailwindcss";
+
+/* Arquivos PHP do projeto */
+@source "../../../src/**/*.php";
+@source "../../../api/**/*.php";
+@source "../../../router.php";
+
+/* Temas ou personalizações personalizadas do IPAC */
+
+@theme {
+  --color-ipac-primary: #1e293b;
+  --color-ipac-gold: #c5a880;
+  --font-serif: "Playfair Display", serif;
+}
+
+/* =========================
+   FONTES
+========================= */
+
+@font-face {
+  font-family: "Geist";
+  src: url("../fonts/Geist-VariableFont_wght.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Syne";
+  src: url("../fonts/Syne-VariableFont_wght.ttf") format("truetype");
+  font-weight: 400 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Cormorant";
+  src: url("../fonts/Cormorant-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+.font-geist {
+  font-family: "Geist", sans-serif;
+}
+
+.font-syne {
+  font-family: "Syne", sans-serif;
+}
+
+.font-cormorant {
+  font-family: "Cormorant", serif;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero-image-wrap {
+  overflow: hidden;
+}
+
+.animate-hero {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform-origin: center;
+  animation: heroAnimation 18s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes heroAnimation {
+  0% {
+    transform: scale(1.08) translate3d(0, 0, 0);
+  }
+
+  25% {
+    transform: scale(1.10) translate3d(-8px, -4px, 0);
+  }
+
+  50% {
+    transform: scale(1.12) translate3d(-16px, 0, 0);
+  }
+
+  75% {
+    transform: scale(1.10) translate3d(-8px, 4px, 0);
+  }
+
+  100% {
+    transform: scale(1.08) translate3d(0, 0, 0);
+  }
+}
+
+/* =========================
+   GALERIA
+========================= */
+
+.gallerySwiper {
+  overflow: hidden;
+}
+
+.gallerySwiper .swiper-slide {
+  transition: .4s ease;
+}
+
+.gallerySwiper .swiper-slide img {
+  width: 100%;
+  object-fit: cover;
+}
+
+/*
+  IMPORTANTE:
+  Não definir height: 620px aqui.
+  O tamanho das imagens será controlado
+  pelas classes responsivas do Tailwind.
+*/
+
+.gallerySwiper .swiper-slide:not(.swiper-slide-active) {
+  transform: scale(.82);
+  opacity: .35;
+}
+
+.gallerySwiper .swiper-slide-active {
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* =========================
+   INSTAGRAM
+========================= */
+
+.instagram-card iframe.instagram-media {
+  min-width: 100%;
+  max-width: 100%;
+  width: 100%;
+  min-height: 1400px;
+  margin: 0;
+}
+
+.instagram-card {
+  height: 500px;
+  max-height: 500px;
+  overflow-y: auto;
+  background: #ffffff;
+}
+
+.instagram-card::-webkit-scrollbar {
+  width: 6px;
+}
+
+.instagram-card::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 8px;
+}
+
+.instagram-card::-webkit-scrollbar-thumb {
+  background: #d4d4d8;
+  border-radius: 8px;
+}
+
+.instagram-card::-webkit-scrollbar-thumb:hover {
+  background: #a1a1aa;
+}
+
+/* =========================
+   SWIPER
+========================= */
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: #000 !important;
+  background: #fff;
+  width: 20px;
+  height: 20px;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 12px !important;
+  font-weight: 600;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #A3B239 !important;
+}
