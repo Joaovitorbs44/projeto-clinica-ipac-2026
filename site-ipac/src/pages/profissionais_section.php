@@ -1,4 +1,8 @@
-<?php $psicologos = require_once __DIR__ . '/../config/lista_psicologos.php'; ?>
+<?php
+
+$psicologos = require_once __DIR__ . '/../config/lista_psicologos.php';
+
+?>
 
 <section class="relative flex flex-col justify-center items-center w-full min-h-screen
                 px-4 min-[375px]:px-5 min-[425px]:px-6 md:px-12 lg:px-20 min-[1440px]:px-20
@@ -30,10 +34,33 @@
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 min-[375px]:gap-4 md:gap-4 w-full">
 
       <?php foreach ($psicologos as $index => $psicologo) { ?>
+
         <?php
-        $prefixo = $psicologo['genero'] === 'feminino' ? 'Dra.' : 'Dr.';
-        $tituloCargo = $psicologo['genero'] === 'feminino' ? 'Psicóloga' : 'Psicólogo';
+
+        $prefixo = $psicologo['genero'] === 'feminino'
+          ? 'Dra.'
+          : 'Dr.';
+
+        $tituloCargo = $psicologo['genero'] === 'feminino'
+          ? 'Psicóloga'
+          : 'Psicólogo';
+
         $escondido = $index >= 3;
+
+        /*
+        |--------------------------------------------------------------------------
+        | WhatsApp
+        |--------------------------------------------------------------------------
+        */
+
+        $whatsapp = '554391639815';
+
+        $mensagem = urlencode(
+          "Olá! Gostaria de agendar uma consulta com {$psicologo['nome']}. Poderiam me passar os horários disponíveis? Por favor"
+        );
+
+        $linkWhatsapp = "https://wa.me/{$whatsapp}?text={$mensagem}";
+
         ?>
 
         <article class="flex justify-between items-center gap-4 min-[375px]:gap-5 min-[425px]:gap-6 md:gap-6 lg:gap-8
@@ -46,28 +73,45 @@
             <div class="flex flex-col gap-2">
 
               <h3 class="text-[11px] min-[375px]:text-xs text-black font-semibold">
-                <?php echo $prefixo . ' ' . htmlspecialchars($psicologo['nome']); ?>
+                <?= $prefixo . ' ' . htmlspecialchars($psicologo['nome']) ?>
               </h3>
 
               <p class="text-[9px] min-[375px]:text-[10px] text-gray-500 font-medium">
-                <?php echo $tituloCargo . ' - CRP ' . htmlspecialchars($psicologo['crp']); ?>
+                <?= $tituloCargo . ' - CRP ' . htmlspecialchars($psicologo['crp']) ?>
               </p>
 
             </div>
 
             <div class="flex flex-wrap items-center gap-3 min-[375px]:gap-4">
 
-              <a href="#" class="inline-flex items-center gap-1 text-[11px] min-[375px]:text-xs text-[#22c55e] font-medium hover:opacity-80 transition-opacity">
+              <!-- WHATSAPP -->
+              <a
+                href="<?= htmlspecialchars($linkWhatsapp) ?>"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-1 text-[11px] min-[375px]:text-xs text-[#22c55e] font-medium hover:opacity-80 transition-opacity"
+              >
+
                 <?= icon('whatsapp', 16) ?>
+
                 <span>Agendar</span>
+
               </a>
 
-              <a href="<?= ($psicologo['instagram']) ?>" class="inline-flex items-center gap-1 text-[11px] min-[375px]:text-xs text-[#ca3d82] font-medium hover:opacity-80 transition-opacity">
+              <!-- INSTAGRAM -->
+              <a
+                href="<?= htmlspecialchars($psicologo['instagram']) ?>"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-1 text-[11px] min-[375px]:text-xs text-[#ca3d82] font-medium hover:opacity-80 transition-opacity"
+              >
+
                 <?= icon('instagram', 16) ?>
 
                 <span class="bg-gradient-to-r from-[#833ab4] via-[#fd1d1d] to-[#fcb045] bg-clip-text text-transparent">
                   Instagram
                 </span>
+
               </a>
 
             </div>
@@ -82,8 +126,8 @@
                       shrink-0 rounded-[12px] overflow-hidden bg-neutral-100">
 
             <img
-              src="<?php echo htmlspecialchars($psicologo['img']); ?>"
-              alt="<?php echo htmlspecialchars($psicologo['nome']); ?>"
+              src="<?= htmlspecialchars($psicologo['img']) ?>"
+              alt="<?= htmlspecialchars($psicologo['nome']) ?>"
               class="w-full h-full object-cover"
               loading="lazy"
             />
