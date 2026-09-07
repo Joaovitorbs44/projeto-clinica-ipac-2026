@@ -14,7 +14,7 @@ $imagens_clinica = [
 
 ?>
 
-<section class="px-4 min-[375px]:px-5 min-[425px]:px-6 md:px-12 lg:px-20 min-[1440px]:px-20 py-16 min-[375px]:py-18 min-[425px]:py-20 md:py-24 relative overflow-hidden bg-neutral-50">
+<section class="px-4 min-[375px]:px-5 min-[425px]:px-6 md:px-12 lg:px-20 min-[1440px]:px-20 py-16 min-[375px]:py-18 min-[425px]:py-20 md:py-24 relative overflow-hidden bg-neutral-50" id="galeria">
 
   <!-- Glow principal -->
   <div
