@@ -5,6 +5,10 @@
 @source "../../../api/**/*.php";
 @source "../../../router.php";
 
+html {
+  scroll-behavior: smooth;
+}
+
 /* Temas ou personalizações personalizadas do IPAC */
 
 @theme {
